@@ -326,31 +326,6 @@ function moveMap(lon, lat) {
 }
 
 
-function search(query) {
-  const endpoint = 'https://naveropenapi.apigw.ntruss.com/map-place/v1/search';
-  const params = {
-    query: query,
-    type: 'building', // search for buildings only
-  };
-  const queryString = Object.entries(params).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
-  const url = `${endpoint}?${queryString}`;
-  
-  const headers = new Headers();
-  const API_KEY_ID = 'xrv3qxunpk ';
-  const API_KEY = '3waRg77cyWgk9bZCx3mkrEqJ9fdNOPfoY4CYUhJa ';
-  headers.append('X-NCP-APIGW-API-KEY-ID', API_KEY_ID);
-  headers.append('X-NCP-APIGW-API-KEY', API_KEY_ID);
-
-  return fetch(url, { headers })
-    .then(response => response.json())
-    .then(data => data.places);
-}
-
-
-// search('City Hall').then(places => {
-//   console.log(places); // an array of places matching the search query
-// });
-
 
 </script>
 </html>
